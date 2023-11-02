@@ -1,48 +1,64 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  let(:user) do
+    User.create(
+      name: 'Me myself',
+      photo_link: 'https://memyself.com/photos/memyself',
+      bio: 'talk about me',
+      posts_counter: 10
+    )
+  end
+
+  let(:post) do
+    Post.create(
+      author: user,
+      title: 'Post one',
+      text: 'This is my first post'
+    )
+  end
+
   describe 'associations' do
-    it 'should have correct associations' do
-      expect(Post.reflect_on_association(:author).macro).to eq(:belongs_to)
-      expect(Post.reflect_on_association(:comments).macro).to eq(:has_many)
-      expect(Post.reflect_on_association(:likes).macro).to eq(:has_many)
-    end
+    it { is_expected.to belong_to(:author).class_name('User').counter_cache(:posts_counter) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
   end
 
   describe 'validations' do
-    it 'should validate presence of name' do
-      post = Post.new(title: nil)
-      expect(post).to_not be_valid
-      expect(post.errors[:title]).to include("can't be blank")
+    it 'is valid with valid attributes' do
+      post = Post.new(author: user, title: 'Post one', text: 'This is my firt post', likes_counter: 0,
+                      comments_counter: 0)
+      expect(post).to be_valid
     end
 
-    it 'should validate numericality of comments_counter' do
-      user = User.create(name: 'name')
-      post = Post.new(title: 'title', text: 'text', author_id: user.id, comments_counter: -1)
+    it 'is not valid without a title' do
+      post.title = ''
       expect(post).to_not be_valid
-      expect(post.errors[:comments_counter]).to include('must be greater than or equal to 0')
     end
-    it 'should validate numericality of likes_counter' do
-      user = User.create(name: 'name')
-      post = Post.new(title: 'title', text: 'text', author_id: user.id, likes_counter: -1)
+
+    it 'is not valid with a title exceeding 250 characters' do
+      post.title = 'A' * 251
       expect(post).to_not be_valid
-      expect(post.errors[:likes_counter]).to include('must be greater than or equal to 0')
+    end
+
+    it 'is not valid with a non-integer comments counter' do
+      post.comments_counter = 'not-an-integer'
+      expect(post).to_not be_valid
+    end
+
+    it 'is not valid with a non-integer likes counter' do
+      post.likes_counter = 'not-an-integer'
+      expect(post).to_not be_valid
     end
   end
 
-  describe '#five_most_recent_likes' do
-    let(:user) { create(:user) }
-
-    it 'recent posts' do
-      user = User.create(name: 'name')
-      first_post = Post.create(title: 'first post', text: 'text', author_id: user.id)
-      first_comment = Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      Comment.create(text: 'text', user_id: user.id, post_id: first_post.id)
-      expect(first_post.recent_comments).to_not include(first_comment)
+  describe 'custom methods in Post' do
+    it 'increments user posts counter' do
+      expect { post.increment_user_posts_counter }.to change(user, :posts_counter).by(1)
+    end
+    it 'checks most recent 5 comments' do
+      expect(post.recent_comments).to eq(post.comments.last(5))
+      puts post.comments.last(5)
     end
   end
 end

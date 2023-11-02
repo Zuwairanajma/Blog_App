@@ -21,9 +21,14 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
       expect(user.errors[:posts_counter]).to include('must be greater than or equal to 0')
     end
+
+    it 'should be valid with correct attributes' do
+      user = User.new(name: 'name', posts_counter: 0)
+      expect(user).to be_valid
+    end
   end
 
-  describe '#three_most_recent_posts' do
+  describe '#most_recent_posts' do
     let(:user) { create(:user) }
 
     it 'returns the three most recent posts' do
