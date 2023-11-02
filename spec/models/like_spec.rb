@@ -9,7 +9,7 @@ RSpec.describe Like, type: :model do
                           bio: 'she loves to design henna and have fun', posts_counter: 0)
       post = Post.create(title: 'MoonLight', text: 'I love moonlight serenity', author: user1, likes_counter: 5,
                          comments_counter: 2)
-      like = Like.create(post: post, user: user2)
+      like = Like.create(post:, user: user2)
 
       expect do
         like.increment_likes_counter
