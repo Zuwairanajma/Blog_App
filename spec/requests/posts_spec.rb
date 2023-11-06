@@ -28,7 +28,7 @@ RSpec.describe 'Posts', type: :request do
       expect(response.body).to include('<h1>Username</h1>')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
       expect(response.body).to include('<div class="container">')
-      expected_image_path = 'src="' + ActionController::Base.helpers.image_path('example.com.png') + '" alt="image">'
+      expected_image_path = "src=\"#{ActionController::Base.helpers.image_path('example.com.png')}\" alt=\"image\">"
       expect(response.body).to include(expected_image_path)
       expect(response.body).to include('<h2>post 1</h2>')
       expect(response.body).to include('<h2>post 2</h2>')

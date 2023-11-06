@@ -14,12 +14,11 @@ RSpec.describe 'Users', type: :request do
 
     it 'renders the index page with html elements' do
       get '/users'
-      image_path = Rails.root.join('app', 'assets', 'images', 'example.com.png')
       expect(response.body).to include('<div class="container">')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
       expect(response.body).to include('<h1>Username</h1>')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
-      expected_image_path = 'src="' + ActionController::Base.helpers.image_path('example.com.png') + '" alt="image">'
+      expected_image_path = "src=\"#{ActionController::Base.helpers.image_path('example.com.png')}\" alt=\"image\">"
       expect(response.body).to include(expected_image_path)
     end
 
@@ -41,7 +40,7 @@ RSpec.describe 'Users', type: :request do
       get '/users/732'
       expect(response.body).to include('<h1>Username</h1>')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
-      expected_image_path = 'src="' + ActionController::Base.helpers.image_path('example.com.png') + '" alt="image">'
+      expected_image_path = "src=\"#{ActionController::Base.helpers.image_path('example.com.png')}\" alt=\"image\">"
       expect(response.body).to include(expected_image_path)
     end
 
