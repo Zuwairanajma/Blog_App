@@ -39,10 +39,10 @@ RSpec.describe 'Users', type: :request do
 
     it 'renders expected html elements' do
       get '/users/732'
-      image_path = Rails.root.join('app', 'assets', 'images', 'example.com.png')
       expect(response.body).to include('<h1>Username</h1>')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
       expected_image_path = 'src="' + ActionController::Base.helpers.image_path('example.com.png') + '" alt="image">'
+      expect(response.body).to include(expected_image_path)
     end
 
     it 'contains the user ID in the URL' do

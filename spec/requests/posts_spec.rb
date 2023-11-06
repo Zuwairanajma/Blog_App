@@ -24,14 +24,12 @@ RSpec.describe 'Posts', type: :request do
 
     it 'renders the page with html template' do
       get '/users/732/posts'
-      image_path = Rails.root.join('app', 'assets', 'images', 'example.com.png')
       expect(response.body).to include('<div class="container">')
       expect(response.body).to include('<h1>Username</h1>')
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
       expect(response.body).to include('<div class="container">')
       expected_image_path = 'src="' + ActionController::Base.helpers.image_path('example.com.png') + '" alt="image">'
       expect(response.body).to include(expected_image_path)
-      # expect(response.body).to include('<img src="' + image_path.to_s + '" alt="image">')
       expect(response.body).to include('<h2>post 1</h2>')
       expect(response.body).to include('<h2>post 2</h2>')
       expect(response.body).to include('<p>comment 1</p>')
