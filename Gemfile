@@ -69,3 +69,4 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'rails-controller-testing'
