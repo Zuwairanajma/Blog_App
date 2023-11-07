@@ -11,7 +11,9 @@ RSpec.describe 'Posts', type: :request do
       get '/users/732/posts'
       expect(response).to render_template(:index)
     end
+  end
 
+  describe 'GET /users/732/posts/:id' do
     it 'renders the show template' do
       get '/users/732/posts/2'
       expect(response).to render_template(:show)

@@ -35,6 +35,14 @@ RSpec.describe 'Users', type: :request do
       get '/users/732'
       expect(response).to have_http_status(200)
     end
+    it 'renders the show.html.erb template' do
+      get '/users/732'
+      expect(response).to render_template(:show)
+    end
+    it 'contains the user ID in the URL' do
+      get '/users/732'
+      expect(request.fullpath).to include('/users/732')
+    end
 
     it 'renders expected html elements' do
       get '/users/732'
@@ -42,16 +50,6 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include('<p class= "inner-text">Number of posts x</p>')
       expected_image_path = "src=\"#{ActionController::Base.helpers.image_path('example.com.png')}\" alt=\"image\">"
       expect(response.body).to include(expected_image_path)
-    end
-
-    it 'contains the user ID in the URL' do
-      get '/users/732'
-      expect(request.fullpath).to include('/users/732')
-    end
-
-    it 'renders the show.html.erb template' do
-      get '/users/732'
-      expect(response).to render_template(:show)
     end
   end
 end
