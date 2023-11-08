@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   def index
-  @posts = Post.includes(:author).where(author_id: params[:user_id])
-  @user = User.includes(:posts).find(params[:user_id])
+    @posts = Post.includes(:author).where(author_id: params[:user_id])
+    @user = User.includes(:posts).find(params[:user_id])
   end
 
   def show
-  @posts = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
-  @user = @post.author
-  @comments = Post.find(@post.id).comments
+    @posts = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+    @user = @post.author
+    @comments = Post.find(@post.id).comments
   end
 
   def new
@@ -26,24 +26,24 @@ class PostsController < ApplicationController
       flash.now[:errors] = 'Invalid post!'
       render :new
     end
-end
-
-def destroy 
-  @post = Post.find_by(author_id: params[:user_id], id: params[:id])
-  @post.destroy
-
-  if @post.destroyed?
-    flash[:notice] = 'Post deleted!'
-    redirect_to user_post_path(@post.author)
-  else
-flash.now[:errors] = 'Unable to delete post!'
-redirect_to user_post_path(@post.author, @post)
   end
-end
 
-private
+  def destroy
+    @post = Post.find_by(author_id: params[:user_id], id: params[:id])
+    @post.destroy
 
-def post_params 
-  params.require(:post).permit(:title, :text)
-end
+    if @post.destroyed?
+      flash[:notice] = 'Post deleted!'
+      redirect_to user_posts_path(@post.author)
+    else
+      flash.now[:errors] = 'Unable to delete post!'
+      redirect_to user_post_path(@post.author, @post)
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end
