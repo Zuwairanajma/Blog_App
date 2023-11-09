@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
     if @post
-    @user = @post.author
-    @comments = @post.comments
+      @user = @post.author
+      @comments = @post.comments
 
     else
       flash[:alert] = 'Post not found'
