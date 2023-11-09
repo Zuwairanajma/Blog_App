@@ -5,9 +5,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+    @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+    if @post
     @user = @post.author
-    @comments = Post.find(@post.id).comments
+    @comments = @post.comments
+
+    else
+      flash[:alert] = 'Post not found'
+    end
   end
 
   def new
