@@ -4,8 +4,7 @@
 </div>
 <div class="posts">
 <h2>Recent Posts</h2>
-<% @recent_posts.each do |post|
- %>
+<% @recent_posts.each do |post| %>
 <%= render 'shared/post', post:post, user:@user %>
 <% end %>
 </div>
