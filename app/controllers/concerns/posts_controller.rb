@@ -4,17 +4,17 @@ class PostsController < ApplicationController
     @user = User.includes(:posts).find(params[:user_id])
   end
 
-def show
-  @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+  def show
+    @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
 
-  if @post
-    @user = @post.author
-    @comments = @post.comments
-  else
-    flash[:alert] = 'Post not found'
-    redirect_to user_posts_path(params[:user_id])
+    if @post
+      @user = @post.author
+      @comments = @post.comments
+    else
+      flash[:alert] = 'Post not found'
+      redirect_to user_posts_path(params[:user_id])
+    end
   end
-end
 
   def new
     @user = current_user
