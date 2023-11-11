@@ -1,15 +1,16 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:author).where(author_id: params[:user_id])
+     @posts = Post.includes(:author).where(author_id: params[:user_id])
     @user = User.includes(:posts).find(params[:user_id])
+    # @posts = @user.posts
   end
 
   def show
     @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
     if @post
       @user = @post.author
-      @comments = @post.comments
-
+      # @comments = @post.comments
+      @comments = Post.find(@post.id).comments
     else
       flash[:alert] = 'Post not found'
     end
