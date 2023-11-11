@@ -1,0 +1,182 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.users a {
+  text-decoration: none;
+  color: blue;
+}
+
+.posts a {
+  text-decoration: none;
+  color: rgb(51, 51, 53);
+}
+
+.users a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+.users a:visited {
+  color: rgb(40, 40, 41);
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #232222;
+  border-radius: 5px;
+  padding: 1rem;
+  height: 120px;
+  box-shadow: -3px 15px 5px -10px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -3px 15px 5px -10px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -3px 15px 5px -10px rgba(0, 0, 0, 0.67);
+  width: 500px;
+  flex-direction: row;
+}
+
+.user-name {
+  margin-left: 20px;
+  margin-top: 40px;
+  width: 300px;
+  text-align: justify;
+}
+
+.user-post {
+  margin-top: 110px;
+  margin-left: -100px;
+  border: 1px transparent;
+}
+
+.userpost-container {
+  display: flex;
+  gap: 50px;
+}
+
+.container-components {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.img-container {
+  display: flex;
+  width: 100px;
+  margin-top: 20px;
+  height: 100px;
+  border: 2px solid #232222;
+  border-radius: 5px;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.img-container img {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.show-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100vw;
+  align-items: center;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 500px;
+  height: 120px;
+  padding: 1rem;
+  border: 2px solid #232222;
+  justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: -3px 15px 5px -10px rgba(0, 0, 0, 0.67);
+}
+
+.interactions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: right;
+}
+
+.post-title {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid #232222;
+  padding: 1rem;
+  width: 500px;
+}
+
+.posts-show {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100vw;
+}
+
+.post-show {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 500px;
+  padding: 1rem;
+  border: 2px solid #232222;
+}
+
+.post-title-show {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.post-interact {
+  display: flex;
+  gap: 1rem;
+  justify-content: right;
+  margin-top: -10px;
+}
