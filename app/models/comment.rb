@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
-  belongs_to :user
-  belongs_to :post
+  belongs_to :user, class_name: 'User'
+  belongs_to :post, class_name: 'Post'
+  has_many :likes, dependent: :destroy
 
   after_create :update_comment_count
 
