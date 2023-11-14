@@ -158,3 +158,4 @@ end
 
 Capybara.default_driver = :selenium_chrome
 Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.default_max_wait_time = 10 # Adjust the value based on your needs
