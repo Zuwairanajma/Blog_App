@@ -4,7 +4,8 @@ RSpec.describe 'User', type: :feature do
   before :each do
     @user = User.create(name: 'Juwairiyya Sadiq', photo_link: 'Photo',
                         bio: 'Undisputed Queen of DIY', posts_counter: 0)
-    @first_post = Post.create(author: @user, title: 'Juwairiyya', text: 'How to make a table', comments_counter: 0, likes_counter: 0)
+    @first_post = Post.create(author: @user, title: 'Juwairiyya', text: 'How to make a table', comments_counter: 0,
+                              likes_counter: 0)
     @comment = Comment.create(post: @first_post, user: @user, text: 'Great post!')
   end
 
