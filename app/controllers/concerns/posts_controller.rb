@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource except: 
+  load_and_authorize_resource except:
   %i[index show]
-  
+
   def index
     @posts = Post.includes(:author).where(author_id: params[:user_id])
     @user = User.find(params[:user_id])
