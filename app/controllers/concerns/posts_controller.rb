@@ -55,3 +55,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :text, :likes_counter, :comments_counter)
   end
 end
+
