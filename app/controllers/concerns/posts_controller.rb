@@ -8,11 +8,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+    # @post = Post.includes(:author).find_by(author_id: params[:user_id], id: params[:id])
+    @post = Post.includes(:author).find(params[:id])
 
     if @post
       @user = @post.author
       @comments = @post.comments
+      # @comments = Post.find(@post.id).comments
 
     else
       flash[:alert] = 'Post not found'
@@ -29,7 +31,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = @user.posts.new(post_params)
     if @post.save
-      redirect_to user_post_path(@user, @post)
+      redirect_to user_post_path(@user, @post), notice: 'Post created successfully!'
     else
       puts @user
       puts @post.errors.full_messages
@@ -50,6 +52,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :likes_counter, :comments_counter)
   end
 end
