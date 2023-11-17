@@ -1,4 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
+  skip_before_action :authenticate_user!
+  protect_from_forgery with: :null_session
+
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments
@@ -31,4 +34,6 @@ class Api::V1::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:text)
   end
+
+  skip_before_action :verify_authenticity_token, only: [:create]
 end
