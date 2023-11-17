@@ -1,0 +1,44 @@
+.user {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 50%;
+  align-items: center;
+}
+
+.user-post {
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  border: 1px solid gray;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.text-container {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  border: 1px solid gray;
+  width: 105%;
+  margin-bottom: 10px;
+  margin-top: 7px;
+  height: 110px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.inner-text {
+  margin-top: 50px;
+}
+
+img {
+  height: 120px;
+}

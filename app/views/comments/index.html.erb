@@ -1,0 +1,11 @@
+<!-- app/views/comments/index.html.erb -->
+<h1>Comments for <%= @post.title %></h1>
+
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+     <% if can?(:destroy, comment) %>
+      <%= button_to 'Delete Comment', user_post_comment_path(@user, @post, comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: 'delete-button' %>
+    <% end %>
+  </div>
+<% end %>

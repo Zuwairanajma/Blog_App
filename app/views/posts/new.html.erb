@@ -1,0 +1,40 @@
+<div class= "post-form">
+  <h2 class= "create-post">Create a post</h2>
+
+  <%# <%= form_with model: @post, url: user_posts_path(@user) do |f| %> 
+  <%= form_with(model: [@user, @post], url: user_posts_path(@user)) do |f| %>
+    <div class= "title-input">
+      <%= f.label :title %>
+      <%= f.text_field :title, required: true %>
+    </div>
+
+    <div class= "comment-input">
+      <%= f.label :text %>
+      <%= f.text_field :text, required: true %>
+    </div>
+<!-- Add fields for likes_counter and comments_counter -->
+    <div class="likes-counter-input">
+      <%= f.label :likes_counter %>
+      <%= f.number_field :likes_counter, value: 0, min: 0 %>
+    </div>
+
+    <div class="comments-counter-input">
+      <%= f.label :comments_counter %>
+      <%= f.number_field :comments_counter, value: 0, min: 0 %>
+    </div>
+    
+    <div class= "submit">
+      <%= f.submit "Submit" %>
+    </div>
+    <% if @post.errors.any? %>
+  <div class="error-messages">
+    <h2>Errors:</h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+         <% end %>
+    </ul>
+  </div>
+  <% end %>
+ <% end %>
+</div>
