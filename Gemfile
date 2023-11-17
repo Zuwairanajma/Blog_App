@@ -51,6 +51,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'will_paginate'
 end
 
 group :development do
@@ -68,8 +69,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'selenium-webdriver'
   # gem 'webdrivers'
-gem 'database_cleaner'
-gem 'launchy'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 gem 'rails-controller-testing'
 gem 'rubocop', '>= 1.0', '< 2.0'
