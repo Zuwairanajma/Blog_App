@@ -51,6 +51,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'will_paginate'
 end
 
 group :development do
