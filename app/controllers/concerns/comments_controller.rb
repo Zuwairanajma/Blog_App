@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
   # before_action :authenticate_user!, except: :index
-  before_action :authenticate_user!, only: [:new, :create, :destroy]
+  before_action :authenticate_user!, only: %i[new create destroy]
 
   def index
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
     @comments = @post.comments
   end
-  
+
   def new
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])

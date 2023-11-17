@@ -18,4 +18,3 @@ class Ability
     can :destroy, Comment, user: user.id, role: 'admin'
   end
 end
-
