@@ -15,7 +15,6 @@ RSpec.describe 'User', type: :feature do
   end
 
   it 'shows post author' do
-    # user_name = Post.find_by(author: @user.name)
     user_name = User.find(@user.id).name
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(user_name)
@@ -33,7 +32,6 @@ RSpec.describe 'User', type: :feature do
     expect(page).to have_content(@first_post.text)
   end
   it 'shows the username of all authors' do
-    # author_name = Comment.find_by(user: @user.name)
     author_name = User.find(@user.id).name
     visit "/users/#{@user.id}/posts/#{@first_post.id}"
     expect(page).to have_content(author_name)
