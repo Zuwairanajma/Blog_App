@@ -35,10 +35,10 @@ RSpec.describe 'User', type: :feature do
     end
 
     it 'shows the first three posts' do
-      visit user_posts_path(@user)
-      expect(page).to have_content('Hello')
-      expect(page).to have_content('Hi')
+    
+      expect(page).to have_content('Energy')
       expect(page).to have_content('Health recipe')
+      expect(page).to have_content('Hi')
     end
 
     it 'should display see all post link' do
@@ -53,7 +53,6 @@ RSpec.describe 'User', type: :feature do
 
     context 'When I click a user\'s post' do
       it 'redirects me to that post\'s show page' do
-        visit user_path(@user)
         click_link('Health recipe')
         expect(page).to have_current_path(user_post_path(@user, @post2))
       end
