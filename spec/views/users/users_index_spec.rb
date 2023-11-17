@@ -5,11 +5,22 @@ RSpec.describe 'users', type: :feature do
     let(:user1) { User.create(name: 'Juwairiyya', photo_link: 'photo_url', bio: 'text', posts_counter: 0) }
     let(:user2) { User.create(name: 'Aisha', photo_link: 'photo_url_2', bio: 'Rabbit officer', posts_counter: 0) }
     let(:user3) { User.create(name: 'Nick', photo_link: 'photo_url_3', bio: 'Rabbit officer', posts_counter: 0) }
-   
-    let(:post4) { Post.create(title: 'Hello', text: 'How to make a table', author_id: user1.id, comments_counter: 0, likes_counter: 0) }
-    let(:post3) { Post.create(title: 'Hi', text: 'How to stay healthy', author_id: user1.id, comments_counter: 0, likes_counter: 0) }
-    let(:post2) { Post.create(title: 'Health recipe', text: 'Eat balance diet', author_id: user1.id, comments_counter: 0, likes_counter: 0) }
-    let(:post1) { Post.create(title: 'Energy', text: 'How to set the solar system', author_id: user1.id, comments_counter: 0, likes_counter: 0) }
+
+    let(:post4) {
+      Post.create(title: 'Hello', text: 'How to make a table', author_id: user1.id, comments_counter: 0,
+                  likes_counter: 0)
+    }
+    let(:post3) {
+      Post.create(title: 'Hi', text: 'How to stay healthy', author_id: user1.id, comments_counter: 0, likes_counter: 0)
+    }
+    let(:post2) {
+      Post.create(title: 'Health recipe', text: 'Eat balance diet', author_id: user1.id, comments_counter: 0,
+                  likes_counter: 0)
+    }
+    let(:post1) {
+      Post.create(title: 'Energy', text: 'How to set the solar system', author_id: user1.id, comments_counter: 0,
+                  likes_counter: 0)
+    }
 
     before(:each) do
       user1
