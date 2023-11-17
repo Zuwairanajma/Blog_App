@@ -18,19 +18,4 @@ class Ability
     can :destroy, Comment, user: user.id, role: 'admin'
   end
 end
-# class Ability
-#   include CanCan::Ability
 
-#   def initialize(user)
-#     return unless user.present?
-
-#     can :read, :all
-#     can :create, [Comment, Post]
-#     if user.role == 'admin'
-#       can :manage, :all
-#     else
-#       can :destroy, Comment, user: user
-#       can :destroy, Post, author: user
-#     end
-#   end
-# end
