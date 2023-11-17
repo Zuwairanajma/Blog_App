@@ -25,19 +25,6 @@ RSpec.describe 'User', type: :feature do
         @post1 = Post.create(title: 'Energy', text: 'How to set the solar system', author_id: @user.id,
                              comments_counter: 0, likes_counter: 0)
 
-        @comment1 = Comment.create(text: 'How to be a con artist', user_id: @user.id, post_id: @post4.id)
-        @comment2 = Comment.create(text: 'How to solve a crime', user_id: @user.id, post_id: @post4.id)
-        @comment3 = Comment.create(text: 'Great post', user_id: @user.id, post_id: @post4.id)
-        @comment4 = Comment.create(text: 'That is just awful', user_id: @user.id, post_id: @post4.id)
-        @comment5 = Comment.create(text: 'Good post!', user_id: @user.id, post_id: @post4.id)
-        @comment6 = Comment.create(text: 'Awesome stuff', user_id: @user.id, post_id: @post4.id)
-        @comment1 = Comment.create(text: 'How to be a con artist', user_id: @user.id, post_id: @post4.id)
-        @comment2 = Comment.create(text: 'How to solve a crime', user_id: @user.id, post_id: @post4.id)
-        @comment3 = Comment.create(text: 'Great post', user_id: @user.id, post_id: @post4.id)
-        @comment4 = Comment.create(text: 'That is just awful', user_id: @user.id, post_id: @post4.id)
-        @comment5 = Comment.create(text: 'Good post!', user_id: @user.id, post_id: @post4.id)
-        @comment6 = Comment.create(text: 'Awesome stuff', user_id: @user.id, post_id: @post4.id)
-
         visit user_path(@user)
       end
       visit user_path(@user)
