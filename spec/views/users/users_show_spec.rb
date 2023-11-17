@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :feature do
-  describe '#show users index' do
     before(:each) do
       @user = User.create(name: 'Juwairiyya Sadiq', bio: 'Undisputed Queen of DIY', photo_link: 'photo',
                           posts_counter: 0)
@@ -56,4 +55,4 @@ RSpec.describe 'User', type: :feature do
       end
     end
   end
-end
+
