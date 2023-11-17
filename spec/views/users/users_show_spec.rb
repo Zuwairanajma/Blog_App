@@ -17,7 +17,6 @@ RSpec.describe 'User', type: :feature do
       visit user_path(@user)
     end
 
-
     it 'shows the username' do
       expect(page).to have_content(@user.name)
     end
